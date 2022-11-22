@@ -1,0 +1,40 @@
+
+entity Vehiculo {
+	modelo String,
+    marca String,
+    km Float,
+    anno LocalDate,
+    precio Float
+    patente String
+}
+
+entity Cliente {
+	dni String,
+    nombre String,
+    apellido String,
+	fechaNacimiento LocalDate
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity CompraVenta {
+	fechaVenta LocalDate,
+    garantia Integer
+}
+
+entity Trabajador {
+	dni Integer
+    nombre String
+    apellido String
+    cargo String
+}
+
+
+relationship OneToMany {
+	Trabajador{vendedor} to CompraVenta,
+    Cliente{cliente} to CompraVenta,
+}
+
+relationship OneToOne {
+	Vehiculo{coche} to CompraVenta
+}
