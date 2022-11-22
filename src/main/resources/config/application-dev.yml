@@ -57,11 +57,6 @@ spring:
       hibernate.cache.use_second_level_cache: true
       hibernate.cache.use_query_cache: false
       hibernate.generate_statistics: false
-  data:
-    elasticsearch:
-      properties:
-        path:
-          home: target/elasticsearch
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev, faker
@@ -101,7 +96,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: NDVlNDczY2Q1NDU4ZmVhNTI4NzM1ZDJhZTI2ZWMyZWMwMTEwM2UzYWM2NGFhZjQ3NmJkNmQ0MWZlZjk2YTFmNWViYjFlOWE2MjczNmY5ZjkzZjEwYWUzODQ2NTgzOTRiNDYwZTAwYmIwNzNlMDYwMzkyZWEzNGJlNGRhYmJmYzU=
+        base64-secret: Y2I1YzAyMjE0ZmE2NzFmNjljNDNkNDcxYmIxOWY1MzQ3YWFlYzNmNGUwNjA2MWU0ZTNjNTk5NGU4ZWIxZDFhNjE1ZWU4MGUxZWY5NzM1MjMyYTc2NmU0M2VjM2QwOGJiOTdiYmUyN2M1ODUzNDc4YjRjNzI1ZTkzNjZmNDA0MDk=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000
