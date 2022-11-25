@@ -29,7 +29,7 @@
                 <td><a [routerLink]="['/compra-venta', compraVenta.id, 'view' ]">{{compraVenta.nombre}}</a></td>
                 <td>{{compraVenta.fechaVenta | date:'mediumDate'}}</td>
                 <td>{{compraVenta.garantia}}</td>
-                <td>{{compraVenta.precioTotal}} €</td>
+                <td>{{compraVenta.precioTotal | currency:'EUR'}} </td>
                 <td>
                     <div *ngIf="compraVenta.vehiculo">
                         <a [routerLink]="['../vehiculo', compraVenta.vehiculo?.id, 'view' ]" >{{compraVenta.vehiculo?.matricula}}</a>

@@ -66,6 +66,20 @@ public class VehiculoServiceImpl implements VehiculoService {
         return vehiculoRepository.findDisponible(pageable);
     }
 
+      /**
+     * Get disponibl the vehiculos.
+     *
+     * @param pageable the pagination information.
+     * @return the list of entities.
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public Page<Vehiculo> findNoDisponible(Pageable pageable) {
+        log.debug("Request to get all Vehiculos");
+        return vehiculoRepository.findNoDisponible(pageable);
+    }
+
+
 
     /**
      * Get one vehiculo by id.

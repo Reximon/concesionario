@@ -72,7 +72,19 @@ export class VehiculoComponent implements OnInit, OnDestroy {
     this.vehiculoService
       .getDisponble({
         page: this.page - 1,
-        size: 3,
+        size: this.itemsPerPage,
+        sort: this.sort()
+      })
+      .subscribe(
+        (res: HttpResponse<IVehiculo[]>) => this.paginateVehiculos(res.body, res.headers),
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
+  }
+  getNoDisponible() {
+    this.vehiculoService
+      .getNoDisponble({
+        page: this.page - 1,
+        size: this.itemsPerPage,
         sort: this.sort()
       })
       .subscribe(

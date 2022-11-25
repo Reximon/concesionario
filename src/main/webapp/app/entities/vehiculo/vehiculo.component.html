@@ -12,7 +12,8 @@
     <br/>
     <div class="table-responsive" *ngIf="vehiculos">
         <button class="btn btn-success btn-sm" (click)='getDisponible()'>Vehiculo disponible</button>
-    T        <button class="btn btn-warning btn-sm" onclick="window.location.reload()"><fa-icon [icon]="'sync'"></fa-icon> Refrescar Lista</button>
+        <button class="btn btn-danger btn-sm" (click)='getNoDisponible()'>Vehiculo no disponible</button>
+        <button class="btn btn-warning btn-sm" onclick="window.location.reload()"><fa-icon [icon]="'sync'"></fa-icon> Refrescar Lista</button>
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
@@ -23,6 +24,7 @@
             <th jhiSortBy="matricula"><span jhiTranslate="concesionarioApp.vehiculo.matricula">Matricula</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="marca"><span jhiTranslate="concesionarioApp.vehiculo.marca">Marca</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="date"><span jhiTranslate="concesionarioApp.vehiculo.date">Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="usado"><span>Usado</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -31,10 +33,11 @@
                 <td><a [routerLink]="['/vehiculo', vehiculo.id, 'view' ]">{{vehiculo.id}}</a></td>
                 <td>{{vehiculo.modelo}}</td>
                 <td jhiTranslate="{{'concesionarioApp.Tipo.' + vehiculo.tipo}}">{{vehiculo.tipo}}</td>
-                <td>{{vehiculo.precio}}</td>
+                <td>{{vehiculo.precio | currency: 'EUR'}}</td>
                 <td>{{vehiculo.matricula}}</td>
                 <td>{{vehiculo.marca}}</td>
                 <td>{{vehiculo.date | date:'mediumDate'}}</td>
+                <td>{{vehiculo.usado}}</td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

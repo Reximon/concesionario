@@ -14,6 +14,7 @@ export interface IVehiculo {
   matricula?: string;
   marca?: string;
   date?: Moment;
+  usado?: boolean;
 }
 
 export class Vehiculo implements IVehiculo {
@@ -24,6 +25,7 @@ export class Vehiculo implements IVehiculo {
     public precio?: number,
     public matricula?: string,
     public marca?: string,
-    public date?: Moment
+    public date?: Moment,
+    public usado?: boolean
   ) {}
 }

@@ -36,7 +36,13 @@ public interface VehiculoService {
      */
     Page<Vehiculo> findDisponible(Pageable pageable);
 
-
+    /**
+     * Get no disponible the vehiculos.
+     *
+     * @param pageable the pagination information.
+     * @return the list of entities.
+     */
+    Page<Vehiculo> findNoDisponible(Pageable pageable);
 
     /**
      * Get the "id" vehiculo.

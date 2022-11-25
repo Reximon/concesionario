@@ -18,6 +18,9 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface VehiculoRepository extends JpaRepository<Vehiculo, Long> {
-    @Query("select u from Vehiculo u where u.tipo = 'coche'")
+    @Query("select v from Vehiculo v LEFT JOIN v.venta cv WHERE cv IS null ")
     Page<Vehiculo> findDisponible(Pageable pageable);
+
+    @Query("select v from Vehiculo v LEFT JOIN v.venta cv WHERE cv IS NOT null ")
+    Page<Vehiculo> findNoDisponible(Pageable pageable);
 }
