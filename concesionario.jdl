@@ -1,0 +1,51 @@
+
+entity Vehiculo {
+	modelo String,
+    tipo Tipo,
+    precio Float,
+  	matricula String
+    marca String
+    date LocalDate
+}
+
+entity Cliente {
+	dni String,
+    nombre String,
+    apellido String,
+	fechaNacimiento LocalDate
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity CompraVenta {
+	fechaVenta LocalDate,
+    garantia Integer,
+    precioTotal Double
+}
+
+entity Trabajador {
+	dni String,
+    nombre String,
+    apellido String,
+    cargo String
+    telefono Integer
+}
+
+enum Tipo {
+COCHE, MOTO, TRACTOR
+
+
+}
+
+relationship OneToMany {
+	CompraVenta{vendedor} to Trabajador,
+    CompraVenta{cliente} to Cliente,
+}
+
+relationship OneToOne {
+	CompraVenta{vehiculo} to Vehiculo
+    
+}
+
+paginate all with pagination
+service all with serviceImpl

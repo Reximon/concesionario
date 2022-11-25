@@ -1,0 +1,10 @@
+{
+  "concesionarioApp": {
+    "Tipo": {
+      "null": "",
+      "COCHE": "COCHE",
+      "MOTO": "MOTO",
+      "TRACTOR": "TRACTOR"
+    }
+  }
+}

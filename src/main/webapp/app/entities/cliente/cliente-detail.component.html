@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Datos del cliente</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="modal.close('Cross click')"><fa-icon [icon]="'times'"></fa-icon></button>
+</div>
+<div class="modal-body">
+  <dl class="row-md jh-entity-details">
+    <dt><span jhiTranslate="concesionarioApp.cliente.dni">Dni</span></dt>
+    <dd>
+      <span>{{ cliente.dni }}</span>
+    </dd>
+    <dt><span jhiTranslate="concesionarioApp.cliente.nombre">Nombre</span></dt>
+    <dd>
+      <span>{{ cliente.nombre }}</span>
+    </dd>
+    <dt><span jhiTranslate="concesionarioApp.cliente.apellido">Apellido</span></dt>
+    <dd>
+      <span>{{ cliente.apellido }}</span>
+    </dd>
+    <dt><span jhiTranslate="concesionarioApp.cliente.fechaNacimiento">Fecha Nacimiento</span></dt>
+    <dd>
+      <span>{{ cliente.fechaNacimiento }}</span>
+    </dd>
+  </dl>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</div>

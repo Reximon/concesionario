@@ -1,0 +1,33 @@
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Trabajador</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <fa-icon [icon]="'times'"></fa-icon>
+        </button>
+	</div>
+    <div class="modal-body">
+                <dt><span jhiTranslate="concesionarioApp.trabajador.dni">Dni</span></dt>
+                <dd>
+                    <span>{{trabajador.dni}}</span>
+                </dd>
+                <dt><span jhiTranslate="concesionarioApp.trabajador.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{trabajador.nombre}}</span>
+                </dd>
+                <dt><span jhiTranslate="concesionarioApp.trabajador.apellido">Apellido</span></dt>
+                <dd>
+                    <span>{{trabajador.apellido}}</span>
+                </dd>
+                <dt><span jhiTranslate="concesionarioApp.trabajador.cargo">Cargo</span></dt>
+                <dd>
+                    <span>{{trabajador.cargo}}</span>
+                </dd>
+                <dt><span jhiTranslate="concesionarioApp.trabajador.telefono">Telefono</span></dt>
+                <dd>
+                    <span>{{trabajador.telefono}}</span>
+                </dd>
+            </dl>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Aceptar</button>
+        </div>
+    </ng-template>

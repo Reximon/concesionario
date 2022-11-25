@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-compra-venta-heading" jhiTranslate="concesionarioApp.compraVenta.home.createOrEditLabel">Create or edit a Compra Venta</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!compraVenta.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <!-- <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="concesionarioApp.compraVenta.fechaVenta" for="field_fechaVenta">Fecha Venta</label>
+                    <div class="input-group">
+                        <input id="field_fechaVenta" type="text" class="form-control" name="fechaVenta" ngbDatepicker  #fechaVentaDp="ngbDatepicker" formControlName="fechaVenta"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaVentaDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div> -->
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="concesionarioApp.compraVenta.garantia" for="field_garantia">Garantia</label>
+                    <input type="number" class="form-control" name="garantia" id="field_garantia"
+                           formControlName="garantia"/>
+                </div>
+                <!-- <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="concesionarioApp.compraVenta.precioTotal" for="field_precioTotal">Precio Total</label>
+                    <input type="number" class="form-control" name="precioTotal" id="field_precioTotal"
+                           formControlName="precioTotal"/>
+                </div> -->
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="concesionarioApp.compraVenta.vehiculo" for="field_vehiculo">Vehiculo</label>
+                    <select class="form-control" id="field_vehiculo" name="vehiculo" formControlName="vehiculo">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="vehiculoOption.id === editForm.get('vehiculo').value?.id ? editForm.get('vehiculo').value : vehiculoOption" *ngFor="let vehiculoOption of vehiculos; trackBy: trackVehiculoById">{{vehiculoOption.matricula}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="concesionarioApp.compraVenta.vendedor" for="field_vendedor">Vendedor</label>
+                    <select class="form-control" id="field_vendedor" name="vendedor" formControlName="vendedor">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="trabajadorOption.id === editForm.get('vendedor').value?.id ? editForm.get('vendedor').value : trabajadorOption" *ngFor="let trabajadorOption of trabajadors; trackBy: trackTrabajadorById">{{trabajadorOption.nombre}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="concesionarioApp.compraVenta.cliente" for="field_cliente">Cliente</label>
+                    <select class="form-control" id="field_cliente" name="cliente" formControlName="cliente">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="clienteOption.id === editForm.get('cliente').value?.id ? editForm.get('cliente').value : clienteOption" *ngFor="let clienteOption of clientes; trackBy: trackClienteById">{{clienteOption.nombre}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

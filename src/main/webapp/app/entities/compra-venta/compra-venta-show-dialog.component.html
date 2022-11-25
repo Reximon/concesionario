@@ -1,0 +1,49 @@
+<div class="modal-header">
+    <h4 class="modal-title">Vista del producto</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            (click)="clear()">&times;
+        </button>
+</div>
+<div class="modal-body">
+    <jhi-alert-error></jhi-alert-error>
+    <p id="jhi-ver-compraVenta-heading"><dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="concesionarioApp.compraVenta.fechaVenta">Fecha Venta</span></dt>
+        <dd>
+            <span>{{compraVenta.fechaVenta}}</span>
+        </dd>
+        <dt><span jhiTranslate="concesionarioApp.compraVenta.garantia">Garantia</span></dt>
+        <dd>
+            <span>{{compraVenta.garantia}}</span>
+        </dd>
+        <dt><span jhiTranslate="concesionarioApp.compraVenta.precioTotal">Precio Total</span></dt>
+        <dd>
+            <span>{{compraVenta.precioTotal}} €</span>
+        </dd>
+        <dt><span jhiTranslate="concesionarioApp.compraVenta.vehiculo">Vehiculo</span></dt>
+        <dd>
+            <div *ngIf="compraVenta.vehiculo">
+                <a [routerLink]="['/vehiculo', compraVenta.vehiculo?.id, 'view']">{{compraVenta.vehiculo?.matricula}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="concesionarioApp.compraVenta.vendedor">Vendedor</span></dt>
+        <dd>
+            <div *ngIf="compraVenta.vendedor">
+                <a [routerLink]="['/trabajador', compraVenta.vendedor?.id, 'view']">{{compraVenta.vendedor?.nombre}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="concesionarioApp.compraVenta.cliente">Cliente</span></dt>
+        <dd>
+            <div *ngIf="compraVenta.cliente">
+                <a [routerLink]="['/cliente', compraVenta.cliente?.id, 'view']">{{compraVenta.cliente?.nombre}}</a>
+            </div>
+        </dd>
+    </dl></p>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+        <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+    </button>
+    <button id="jhi-confirm-ver-compraVenta" type="submit" class="btn btn-outline-primary"  (click)="clear()">
+        <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span>Aceptar</span>
+    </button>
+</div>

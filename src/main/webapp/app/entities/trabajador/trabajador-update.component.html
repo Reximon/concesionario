@@ -1,0 +1,55 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Trabajador</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.close('Cross click')">
+        <fa-icon [icon]="'times'"></fa-icon>
+    </button>
+</div>
+<div class="modal-body">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-trabajador-heading" jhiTranslate="concesionarioApp.trabajador.home.createOrEditLabel">Create or edit a Trabajador</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <!-- <div class="form-group" [hidden]="!trabajador.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" [(ngModel)]="trabajador.id"  id="id" name="id" formControlName="id"
+                        readonly />
+                </div> -->
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="concesionarioApp.trabajador.dni" for="field_dni">Dni</label>
+                    <input type="text"  class="form-control" name="dni" id="dni "
+                           formControlName="dni"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="concesionarioApp.trabajador.nombre" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" [(ngModel)]="trabajador.nombre"  id="field_nombre"
+                           formControlName="nombre"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="concesionarioApp.trabajador.apellido" for="field_apellido">Apellido</label>
+                    <input type="text" class="form-control" name="apellido"  [(ngModel)]="trabajador.apellido" id="field_apellido"
+                           formControlName="apellido"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="concesionarioApp.trabajador.cargo" for="field_cargo">Cargo</label>
+                    <input type="text" class="form-control" name="cargo" id="field_cargo"  [(ngModel)]="trabajador.cargo"
+                           formControlName="cargo"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="concesionarioApp.trabajador.telefono" for="field_telefono">Telefono</label>
+                    <input type="number" class="form-control" name="telefono"  [(ngModel)]="trabajador.telefono" id="field_telefono"
+                           formControlName="telefono"/>
+                </div>
+
+            </div>
+            <button type="button" id="cancel-save" class="btn btn-secondary">
+                <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+            </button>
+            <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                <fa-icon [icon]="'check'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+            </button>
+        </form>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+</ng-template>
