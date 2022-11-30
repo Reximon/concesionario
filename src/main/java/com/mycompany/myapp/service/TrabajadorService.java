@@ -1,6 +1,7 @@
 package com.mycompany.myapp.service;
 
 import com.mycompany.myapp.domain.Trabajador;
+import com.mycompany.myapp.service.dto.TrabajadorDTO;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,9 +27,9 @@ public interface TrabajadorService {
      * @param pageable the pagination information.
      * @return the list of entities.
      */
-    Page<Trabajador> findAll(Pageable pageable);
+    Page<TrabajadorDTO> findAll(Pageable pageable);
      /**
-     * Get all the trabajadors.
+     * Get all the sales from trabajadors.
      *
      * @param pageable the pagination information.
      * @return the list of entities.

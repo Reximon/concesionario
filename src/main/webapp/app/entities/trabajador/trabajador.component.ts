@@ -127,7 +127,7 @@ export class TrabajadorComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadAll();
-    this.getCounterSales();
+    //this.getCounterSales();
     this.accountService.identity().then(account => {
       this.currentAccount = account;
     });

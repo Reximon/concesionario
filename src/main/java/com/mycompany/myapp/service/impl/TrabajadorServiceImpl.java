@@ -1,16 +1,22 @@
 package com.mycompany.myapp.service.impl;
 
 import com.mycompany.myapp.service.TrabajadorService;
+import com.mycompany.myapp.service.dto.TrabajadorDTO;
+import com.mycompany.myapp.service.mapper.TrabajadorMapper;
+
 import com.mycompany.myapp.domain.Trabajador;
 import com.mycompany.myapp.repository.TrabajadorRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -48,9 +54,16 @@ public class TrabajadorServiceImpl implements TrabajadorService {
      */
     @Override
     @Transactional(readOnly = true)
-    public Page<Trabajador> findAll(Pageable pageable) {
+    public Page<TrabajadorDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Trabajadors");
-        return trabajadorRepository.findAll(pageable);
+        Page<Trabajador> trabajadores = trabajadorRepository.findAll(pageable);
+        List<TrabajadorDTO> trabajadoresDTO = new ArrayList<>();
+        TrabajadorMapper trabajadorMapper = new TrabajadorMapper();
+        trabajadores.forEach(trabajador -> {
+            Long numeroVentas = trabajadorRepository.getAllCounterSales(trabajador.getId());
+            trabajadoresDTO.add(trabajadorMapper.toDTO(trabajador, numeroVentas));
+        });
+        return new PageImpl<>(trabajadoresDTO, pageable,trabajadores.getSize());
     }
 
         /**
@@ -62,7 +75,7 @@ public class TrabajadorServiceImpl implements TrabajadorService {
     @Override
     @Transactional(readOnly = true)
     public Long getCounterAllSales(Long trabajadorId) {
-        log.debug("Request to get all Trabajadors");
+        log.debug("Request to get all sales from Trabajadors");
         return trabajadorRepository.getAllCounterSales(trabajadorId);
     }
 

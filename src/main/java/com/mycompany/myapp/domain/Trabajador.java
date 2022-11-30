@@ -41,8 +41,6 @@ public class Trabajador implements Serializable {
     @Column(name = "telefono")
     private Integer telefono;
 
-    private Long contador;
-
     // @Column(name = "contador")
     // private Integer contador;
 
@@ -157,25 +155,5 @@ public class Trabajador implements Serializable {
                 ", cargo='" + getCargo() + "'" +
                 ", telefono=" + getTelefono() +
                 "}";
-    }
-
-    public static long getSerialversionuid() {
-        return serialVersionUID;
-    }
-
-    public List<CompraVenta> getVenta() {
-        return venta;
-    }
-
-    public void setVenta(List<CompraVenta> venta) {
-        this.venta = venta;
-    }
-
-    public Long getContador() {
-        return contador;
-    }
-
-    public void setContador(Long contador) {
-        this.contador = contador;
     }
 }

@@ -15,6 +15,6 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface TrabajadorRepository extends JpaRepository<Trabajador, Long> {
-    @Query(" SELECT count(cv) FROM CompraVenta cv WHERE cv.vendedor.id = 4 ")
-    Long getAllCounterSales(Long trabajadorId );
+    @Query(" SELECT count(cv) FROM CompraVenta cv WHERE cv.vendedor.id = :id")
+    Long getAllCounterSales(@Param("id")Long trabajadorId );
 }

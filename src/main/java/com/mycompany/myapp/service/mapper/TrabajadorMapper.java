@@ -8,18 +8,13 @@ import java.util.stream.Collectors;
 
 public class TrabajadorMapper {
 
-    // @Mapper(componentModel = "spring")
-    // public interface TrabajadorMapper {
-    //     TrabajadorDTO toDto(Trabajador trabajador);
-    // }
+    public TrabajadorDTO toDTO(Trabajador trabajador, Long contador){
 
-    // @Override
-    // public TrabajadorDto toDTO(Trabajador trabajador) {
+        TrabajadorDTO trabajadorDTO = new TrabajadorDTO();
+                trabajadorDTO.setNombre(trabajador.getNombre());
+                trabajadorDTO.setApellidos(trabajador.getApellido());
+                trabajadorDTO.setContador(contador);
 
-    // TrabajadorDTO trabajadorDTO = new TrabajadorDTO();
-    // trabajadorDTO.setNombre(trabajador.getNombre());
-    // trabajadorDTO.setApellidos(trabajador.getApellido());
-    // trabajadorDTO.setContador(trabajador.getContador());
-    // return trabajadorDTO;
-    // }
+        return trabajadorDTO;
+    }
 }

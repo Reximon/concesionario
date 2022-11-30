@@ -1,6 +1,7 @@
 package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.domain.Trabajador;
+import com.mycompany.myapp.service.dto.TrabajadorDTO;
 import com.mycompany.myapp.service.TrabajadorService;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 
@@ -37,6 +38,7 @@ public class TrabajadorResource {
     private static final String ENTITY_NAME = "trabajador";
 
     @Value("${jhipster.clientApp.name}")
+
     private String applicationName;
 
     private final TrabajadorService trabajadorService;
@@ -92,12 +94,23 @@ public class TrabajadorResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of trabajadors in body.
      */
     @GetMapping("/trabajadors")
-    public ResponseEntity<List<Trabajador>> getAllTrabajadors(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<List<TrabajadorDTO>> getAllTrabajadors(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to get a page of Trabajadors");
-        Page<Trabajador> page = trabajadorService.findAll(pageable);
+        Page<TrabajadorDTO> page = trabajadorService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
+
+    // Holi esto es un DTO
+
+    // @GetMapping("/trabajadors")
+    // public ResponseEntity<List<TrabajadorDTO>> getAllSales(Long trabajadorId) {
+    //     log.debug("REST request to get a page of Trabajadors");
+    //     Long page = trabajadorService.getCounterAllSales(4l);
+    //     return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, trabajadorId.toString())).build();
+    // }
+
+
 
        /**
      * {@code GET  /trabajadors} : get all saales from the trabajadors.
@@ -105,12 +118,12 @@ public class TrabajadorResource {
      * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of trabajadors in body.
      */
-    @GetMapping("/trabajadors/contador")
-    public ResponseEntity<Long> getAllSales(Long trabajadorId) {
-        log.debug("REST request to get a page of Trabajadors");
-        Long page = trabajadorService.getCounterAllSales(4l);
-        return ResponseEntity.ok().body(page);
-    }
+    // @GetMapping("/trabajadors/contador")
+    // public ResponseEntity<Long> getAllSales(Long trabajadorId) {
+    //     log.debug("REST request to get a page of Trabajadors");
+    //     Long page = trabajadorService.getCounterAllSales(4l);
+    //     return ResponseEntity.ok().body(page);
+    // }
 
     /**
      * {@code GET  /trabajadors/:id} : get the "id" trabajador.
@@ -125,7 +138,7 @@ public class TrabajadorResource {
         return ResponseUtil.wrapOrNotFound(trabajador);
     }
 
-    /**
+    /**ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build()
      * {@code DELETE  /trabajadors/:id} : delete the "id" trabajador.
      *
      * @param id the id of the trabajador to delete.
