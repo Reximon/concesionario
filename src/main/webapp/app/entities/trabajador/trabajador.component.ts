@@ -65,14 +65,6 @@ export class TrabajadorComponent implements OnInit, OnDestroy {
         (res: HttpErrorResponse) => this.onError(res.message)
       );
   }
-  getCounterSales() {
-    this.trabajadorService
-      .getCounterSale({})
-      .subscribe(
-        (res: HttpResponse<ITrabajador[]>) => this.paginateTrabajadors(res.body, res.headers),
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
-  }
 
   open(content) {
     const modalRef = this.modalService.open(TrabajadorDetailComponent, { ariaLabelledBy: 'modal-basic-title' });

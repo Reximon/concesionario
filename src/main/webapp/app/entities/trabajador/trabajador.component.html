@@ -26,8 +26,8 @@
           <th jhiSortBy="telefono">
             <span jhiTranslate="concesionarioApp.trabajador.telefono">Telefono</span> <fa-icon [icon]="'sort'"></fa-icon>
           </th>
-          <th>
-            <span>Contador</span><fa-icon [icon]="'sort'"></fa-icon>
+          <th jhiSortBy="contador">
+            <span>Comisión</span><fa-icon [icon]="'sort'"></fa-icon>
           </th>
         </tr>
       </thead>
@@ -41,7 +41,9 @@
           <td>{{ trabajador.apellido }}</td>
           <td>{{ trabajador.cargo }}</td>
           <td>{{ trabajador.telefono }}</td>
-          <td> {{trabajador.contador}} </td>
+          <!-- <td *ngIf="trabajador.contador < 1" > {{trabajador.contador }} + 0%</td> -->
+          <td *ngIf="trabajador.contador < 1;else comision" > 0%</td>
+          <ng-template #comision><td> 3%</td> </ng-template>
           <td class="text-right">
             <div class="btn-group">
               <button type="submit" (click)="open(trabajador)">
