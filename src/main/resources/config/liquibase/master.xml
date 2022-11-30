@@ -15,4 +15,5 @@
     <!-- <include file="config/liquibase/changelog/20221122114626_added_entity_constraints_Trabajador.xml" relativeToChangelogFile="false"/> -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <include file="config/liquibase/changelog/20221125131233_modify_entity_vehiculo_added_column_usado.xml" relativeToChangelogFile="false"/>
+
 </databaseChangeLog>

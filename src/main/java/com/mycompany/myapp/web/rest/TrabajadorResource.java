@@ -99,6 +99,19 @@ public class TrabajadorResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
+       /**
+     * {@code GET  /trabajadors} : get all saales from the trabajadors.
+     *
+     * @param pageable the pagination information.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of trabajadors in body.
+     */
+    @GetMapping("/trabajadors/contador")
+    public ResponseEntity<Long> getAllSales(Long trabajadorId) {
+        log.debug("REST request to get a page of Trabajadors");
+        Long page = trabajadorService.getCounterAllSales(4l);
+        return ResponseEntity.ok().body(page);
+    }
+
     /**
      * {@code GET  /trabajadors/:id} : get the "id" trabajador.
      *

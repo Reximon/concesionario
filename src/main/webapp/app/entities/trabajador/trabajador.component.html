@@ -26,7 +26,9 @@
           <th jhiSortBy="telefono">
             <span jhiTranslate="concesionarioApp.trabajador.telefono">Telefono</span> <fa-icon [icon]="'sort'"></fa-icon>
           </th>
-          <th></th>
+          <th>
+            <span>Contador</span><fa-icon [icon]="'sort'"></fa-icon>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -39,6 +41,7 @@
           <td>{{ trabajador.apellido }}</td>
           <td>{{ trabajador.cargo }}</td>
           <td>{{ trabajador.telefono }}</td>
+          <td> {{getCounterSale}} </td>
           <td class="text-right">
             <div class="btn-group">
               <button type="submit" (click)="open(trabajador)">

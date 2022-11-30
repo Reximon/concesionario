@@ -53,6 +53,18 @@ public class TrabajadorServiceImpl implements TrabajadorService {
         return trabajadorRepository.findAll(pageable);
     }
 
+        /**
+     * Get all the trabajadors.
+     *
+     * @param pageable the pagination information.
+     * @return the list of entities.
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public Long getCounterAllSales(Long trabajadorId) {
+        log.debug("Request to get all Trabajadors");
+        return trabajadorRepository.getAllCounterSales(trabajadorId);
+    }
 
     /**
      * Get one trabajador by id.

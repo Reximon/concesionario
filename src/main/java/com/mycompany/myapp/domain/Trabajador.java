@@ -1,12 +1,12 @@
 package com.mycompany.myapp.domain;
 
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -23,6 +23,9 @@ public class Trabajador implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToMany
+    private List<CompraVenta> venta;
+
     @Column(name = "dni")
     private String dni;
 
@@ -38,7 +41,21 @@ public class Trabajador implements Serializable {
     @Column(name = "telefono")
     private Integer telefono;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    private Long contador;
+
+    // @Column(name = "contador")
+    // private Integer contador;
+
+    // public Integer getContador() {
+    //     return contador;
+    // }
+
+    // public void setContador(Integer contador) {
+    //     this.contador = contador;
+    // }
+
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not
+    // remove
     public Long getId() {
         return id;
     }
@@ -111,7 +128,8 @@ public class Trabajador implements Serializable {
     public void setTelefono(Integer telefono) {
         this.telefono = telefono;
     }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and
+    // setters here, do not remove
 
     @Override
     public boolean equals(Object o) {
@@ -132,12 +150,32 @@ public class Trabajador implements Serializable {
     @Override
     public String toString() {
         return "Trabajador{" +
-            "id=" + getId() +
-            ", dni='" + getDni() + "'" +
-            ", nombre='" + getNombre() + "'" +
-            ", apellido='" + getApellido() + "'" +
-            ", cargo='" + getCargo() + "'" +
-            ", telefono=" + getTelefono() +
-            "}";
+                "id=" + getId() +
+                ", dni='" + getDni() + "'" +
+                ", nombre='" + getNombre() + "'" +
+                ", apellido='" + getApellido() + "'" +
+                ", cargo='" + getCargo() + "'" +
+                ", telefono=" + getTelefono() +
+                "}";
+    }
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+    public List<CompraVenta> getVenta() {
+        return venta;
+    }
+
+    public void setVenta(List<CompraVenta> venta) {
+        this.venta = venta;
+    }
+
+    public Long getContador() {
+        return contador;
+    }
+
+    public void setContador(Long contador) {
+        this.contador = contador;
     }
 }

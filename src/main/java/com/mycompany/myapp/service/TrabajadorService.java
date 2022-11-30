@@ -27,6 +27,14 @@ public interface TrabajadorService {
      * @return the list of entities.
      */
     Page<Trabajador> findAll(Pageable pageable);
+     /**
+     * Get all the trabajadors.
+     *
+     * @param pageable the pagination information.
+     * @return the list of entities.
+     */
+    Long getCounterAllSales(Long trabajadorId);
+
 
 
     /**
